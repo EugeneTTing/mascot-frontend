@@ -4,21 +4,24 @@
     position: fixed;
     left: 0;
     top: 0;
+    margin: 0;
+    padding: 0;
     padding-top: 40px;
-    padding-left: 20px;
     background-color: lightblue;
+}
+
+.sidebar li{
+    list-style-type: none;
+    padding: 10px;
+}
+
+.detail {
+    position: relative;
+    margin-left: 270px;
 }
 
 .sidebar h2 {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
-        'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    padding: 20px;
 }
 
-.detail {
-    margin-left: 270px;
-
-}

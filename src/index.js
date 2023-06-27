@@ -17,6 +17,8 @@ import Cancer from './routes/risk/breast_cancer/cancer'
 import Cvd from './routes/risk/cvd/cvd';
 import Fracture from './routes/risk/fracture/fracture';
 import './index.css';
+import store from './redux/store';
+import { Provider } from 'react-redux';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter(
@@ -38,9 +40,11 @@ const router = createBrowserRouter(
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <RouterProvider router={router}/>
+    </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
