@@ -4,7 +4,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-  Route
+  Route,
+  Routes
 } from 'react-router-dom';
 import Root from './root';
 import Home from './routes/home/home';
