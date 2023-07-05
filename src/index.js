@@ -5,7 +5,6 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
-  Routes
 } from 'react-router-dom';
 import Root from './root';
 import Home from './routes/home/home';
@@ -13,10 +12,6 @@ import About from './routes/about/about';
 import Risk from './routes/risk/risk'
 import Symptoms from './routes/symptoms/symptoms';
 import Help from './routes/help/help';
-import General from './routes/risk/general/general';
-import Cancer from './routes/risk/breast_cancer/cancer'
-import Cvd from './routes/risk/cvd/cvd';
-import Fracture from './routes/risk/fracture/fracture';
 import './index.css';
 import store from './redux/store';
 import { Provider } from 'react-redux';
@@ -27,12 +22,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<Root/>}>
       <Route index element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
-      <Route path='/risk' element={<Risk/>}>
-        <Route path='/risk/general' element={<General/>}/>
-        <Route path='/risk/breast_cancer' element={<Cancer/>}/>
-        <Route path='/risk/cvd' element={<Cvd/>}/>
-        <Route path='/risk/fracture' element={<Fracture/>}/>
-      </Route>
+      <Route path='/risk' element={<Risk/>}/>
       <Route path='/symptoms' element={<Symptoms/>}/>
       <Route path='/help' element={<Help/>}/>
     </Route>

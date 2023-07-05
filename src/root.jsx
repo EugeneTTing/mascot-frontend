@@ -10,7 +10,7 @@ export default function Root() {
             <div className="sidebar">
                 <h2>MAsCoT</h2>
                 <li><Link to={`about`}>About</Link></li>
-                <li><Link to={`risk/general`}>Risk Calculator</Link></li>
+                <li><Link to={`risk`}>Risk Calculator</Link></li>
                 <li><Link to={`symptoms`}>Symptom Tracker</Link></li>
                 <li><Link to={`help`}>Help</Link></li>
             </div>
