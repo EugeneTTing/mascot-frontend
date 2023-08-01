@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 import { append } from "../../redux/symptomSlice";
 import { symptomQuestions, symptomLabels } from "./symptomResults";
 
-
-
 const Questions = ({index}) => {
     return (
         <>
