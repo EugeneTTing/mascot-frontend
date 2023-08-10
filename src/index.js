@@ -15,6 +15,7 @@ import Help from './routes/help/help';
 import './index.css';
 import store from './redux/store';
 import { Provider } from 'react-redux';
+import Formulations from './routes/formulation/formulation';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route index element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/risk' element={<Risk/>}/>
+      <Route path='/formulations' element={<Formulations/>}/>
       <Route path='/symptoms' element={<Symptoms/>}/>
       <Route path='/help' element={<Help/>}/>
     </Route>

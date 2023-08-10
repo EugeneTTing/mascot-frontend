@@ -1,21 +1,23 @@
 import "./root.css";
 import {
     Outlet,
-    Link,
+    NavLink,
 } from "react-router-dom";
 
 export default function Root() {
     return (
         <>
             <div className="sidebar">
-                <h2>MAsCoT</h2>
-                <li><Link to={`about`}>About</Link></li>
-                <li><Link to={`risk`}>Risk Calculator</Link></li>
-                <li><Link to={`symptoms`}>Symptom Tracker</Link></li>
-                <li><Link to={`help`}>Help</Link></li>
+                <img src="/images/alt_logo_no_text.svg" alt="logo"/>
+                <NavLink to="/" end>Home</NavLink>
+                <NavLink to={`about`}>About</NavLink>
+                <NavLink to={`risk`}>Risk Calculator</NavLink>
+                <NavLink to={`formulations`}>HRT Formulations</NavLink>
+                <NavLink to={`symptoms`}>Symptom Tracker</NavLink>
+                <NavLink to={`help`}>Help</NavLink>
             </div>
             <div className="detail">
-                <Outlet />
+                <Outlet/>
             </div>
         </>
     )

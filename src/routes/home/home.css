@@ -1,0 +1,18 @@
+img {
+    display: block;
+    margin: auto;
+    width: 60%;
+    max-width: 800px;
+}
+
+.title {
+    text-align: center;
+    color: #041514;
+    font-size: 48px;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+}
+
+.green {
+    color: #04948c;
+}

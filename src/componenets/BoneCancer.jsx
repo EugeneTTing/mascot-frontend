@@ -11,7 +11,6 @@ const BoneCancer = () => {
 
     const content = (
         <>
-            <p>Bone, Cancer, and Heart Health</p>
 
             <div className="form-page">
 
@@ -156,7 +155,7 @@ const BoneCancer = () => {
                 </div>
                 
             </div>
-
+            
         </>
     )
 

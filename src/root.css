@@ -1,27 +1,63 @@
 .sidebar {
+    box-sizing: border-box;
     height: 100%;
-    width: 250px;
+    width: 290px;
     position: fixed;
-    left: 0;
+    left: 250px;
     top: 0;
     margin: 0;
-    padding: 0;
-    padding-top: 40px;
-    background-color: lightblue;
+    padding: 40px 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    border-left: 2px solid lightgray;
+    border-right: 2px solid lightgray;
+    background-color: whitesmoke;
+    gap: 10px;
+    z-index: 1;
 }
 
-.sidebar li{
-    list-style-type: none;
-    padding: 10px;
+.sidebar img {
+    margin: 0;
+    width: 250px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background-color 0.1s ease-in 0s;
+}
+
+.sidebar a:hover {
+    background-color: lightgray;
+}
+
+.sidebar a.active {
+    background-color: lightgray;
 }
 
 .detail {
-    position: relative;
-    margin-left: 270px;
+    box-sizing: border-box;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 250px;
+    margin-left: 540px;
+    padding: 30px 50px;
+    border-right: 2px solid lightgray;
+    background-color: whitesmoke;
+    overflow-y: auto;
 }
 
-.sidebar h2 {
-    margin: 0;
-    padding: 20px;
+.detail::-webkit-scrollbar {
+    width: 10px;
+}
+
+.detail::-webkit-scrollbar-thumb {
+    background-color: lightgray;
 }
 

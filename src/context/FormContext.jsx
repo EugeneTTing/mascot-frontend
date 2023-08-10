@@ -4,15 +4,27 @@ const FormContext = createContext()
 
 export const FormProvider = ({ children }) => {
 
+    const title = {
+        0: "About You",
+        1: "Family History",
+        2: "Reproductive Health",
+        3: "Cancer, Bone, and Heart Health",
+        4: "Medical History"
+    }
+
     const [page, setPage] = useState(0)
 
     const [data, setData] = useState({
         age: "",
         height: "",
+        heightinches: "",
         weight: "",
         ethnicity: "",
         alcohol: "",
+        smoking: "",
         fh_cvd: false,
+        fh_osteo: false,
+        ash: false,
         m_br_cancer: false,
         m_br_cancer_age: "",
         m_br_cancer_2: false,
@@ -21,12 +33,16 @@ export const FormProvider = ({ children }) => {
         m_ov_cancer_age: "",
         m_pa_cancer: false,
         m_pa_cancer_age: "",
-        m_alive: false,
+        m_dead: false,
+        m_age: "",
+        m_yob: "",
         f_pr_cancer: false,
         f_pr_cancer_age: "",
         f_pa_cancer: false,
         f_pa_cancer_age: "",
-        f_alive: false,
+        f_dead: false,
+        f_age: "",
+        f_yob: "",
         menarche: "",
         oral_c: "never",
         oral_c_years: "",
@@ -55,7 +71,7 @@ export const FormProvider = ({ children }) => {
         hypert_treat: false,
         ratio: "",
         sbp: "",
-        diabetes: false,
+        diabetes: "none",
         kidney: "none",
         liver: false,
         parkin: false,
@@ -73,6 +89,41 @@ export const FormProvider = ({ children }) => {
         anticonvulsants: false,
         antidepressants: false,
     })
+
+    // console.log( Object.keys(data).filter(k => k.endsWith("yob") || k.endsWith("age")))
+
+    /* Form validation logic. Cannot move on to next page if some data invalid. */
+    const pageValid = [
+
+        (
+            Object.values(data).slice(0, 2).every(Boolean) 
+            && Object.values(data).slice(3, 7).every(Boolean) 
+            && data.age > 39 && data.age < 81
+            && data.heightinches >= 0 && data.heightinches < 13
+        ),
+
+        (
+            Object.keys(data)
+            .filter(key => data[key] && (key.startsWith("f_") || key.startsWith("m_"))&& key.endsWith("cancer"))
+            .map(key => data[key.concat("_age")]).every(Boolean) &&
+            [data.m_age, data.m_yob, data.f_age, data.f_yob].every(Boolean)
+        ),
+
+        (
+            data.menarche && 
+            (!data.has_children || (data.num_children && data.age_at_first_child)) &&
+            (!data.menopause || data.menopause_age) &&
+            (data.oral_c === "never" || data.oral_c_years) &&
+            (data.hrt === "never" || data.hrt_years) &&
+            (!data.coil || data.coil_years)
+        ),
+
+        (
+            !data.biopsy || (data.num_biopsy)
+        ),
+
+        false
+    ]
 
     useEffect(() => {
         if (!data.m_br_cancer) {
@@ -127,14 +178,68 @@ export const FormProvider = ({ children }) => {
         }
     }, [data.f_pa_cancer])
 
+    useEffect(() => {
+        if (data.oral_c === "never") {
+            setData(prevData => ({
+                ...prevData,
+                oral_c_years: ""
+            }))
+        }
+    }, [data.oral_c])
+
+    useEffect(() => {
+        if (!data.has_children) {
+            setData(prevData => ({
+                ...prevData,
+                num_children: "",
+                age_at_first_child: ""
+            }))
+        }
+    }, [data.has_children])
+
+    useEffect(() => {
+        if (!data.menopause) {
+            setData(prevData => ({
+                ...prevData,
+                menopause_age: ""
+            }))
+        }
+    }, [data.menopause])
+
+    useEffect(() => {
+        if (data.hrt === "never") {
+            setData(prevData => ({
+                ...prevData,
+                hrt_years: "",
+                hrt_form: "e+p"
+            }))
+        }
+    }, [data.hrt])
+
+    useEffect(() => {
+        if (!data.coil) {
+            setData(prevData => ({
+                ...prevData,
+                coil_ius: false,
+                coil_years: ""
+            }))
+        }
+    }, [data.coil])
+
+    useEffect(() => {
+        if (!data.biopsy) {
+            setData(prevData => ({
+                ...prevData,
+                num_biopsy: "",
+                atyp_hyperplasia: false
+            }))
+        }
+    }, [data.biopsy])
+
     const handleChange = e => {
         const type = e.target.type
-
         const name = e.target.name
-
-        const value = type === "checkbox"
-            ? e.target.checked
-            : e.target.value
+        const value = e.target.value
 
         if (type === "radio" && (value === "true" || value === "false")) {
             setData(prevData => ({
@@ -147,22 +252,66 @@ export const FormProvider = ({ children }) => {
                 [name]: value
             }))
         }
+        
+        if (name === "m_age" && !data.m_dead) {
+            if (value !== "") {
+                let yob = (new Date().getFullYear() - parseInt(value))
+                setData(prevData => ({
+                    ...prevData,
+                    m_yob: yob
+                }))
+            } else {
+                setData(prevData => ({
+                    ...prevData,
+                    m_yob: ""
+                }))
+            }
+        }
+
+        if (name === "f_age" && !data.f_dead) {
+            if (value !== "") {
+                let yob = (new Date().getFullYear() - parseInt(value))
+                setData(prevData => ({
+                    ...prevData,
+                    f_yob: yob
+                }))
+            } else {
+                setData(prevData => ({
+                    ...prevData,
+                    f_yob: ""
+                }))
+            }
+        }
     }
 
-    const disablePrev = page === 0
+    const [heightUnit, setHeightUnit] = useState("cm")
 
-    const disableNext = page === 4
+    const [weightUnit, setWeightUnit] = useState("kg")
+
+    const handleUnitChange = e => {
+        const unit = e.target.name
+        const value = e.target.value
+
+        if (unit === "weight") {
+            setWeightUnit(value)
+        } else {
+            setHeightUnit(value)
+        }
+    }
 
     return (
         <FormContext.Provider 
             value={{
+                title,
                 page, 
                 setPage,
                 data,
                 setData,
                 handleChange,
-                disablePrev,
-                disableNext,
+                pageValid,
+                heightUnit,
+                weightUnit,
+                handleUnitChange
                 }}>
 
             {children}
