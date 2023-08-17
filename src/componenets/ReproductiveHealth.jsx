@@ -132,7 +132,7 @@ const ReproductiveHealth = () => {
                     <div className="binary-question">
 
                         <label htmlFor="menopause">
-                            Have you <span className="tooltip" data-text={menopause_text}>reached menopause</span>?
+                            Have you <span className="tooltip" data-text={menopause_text}>reached menopause</span>? <span className="material-symbols-rounded">help</span>
                         </label>
                         <BinaryRadio name="menopause"/>
 

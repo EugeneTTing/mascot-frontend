@@ -116,7 +116,7 @@ const About = () =>  {
 
                 <div className="question-wrapper">
                     <div className="select-question explained">
-                        <label htmlFor="alocohol">Select the option which best describes your <span className="tooltip" data-text={alcohol}>level of alcohol consumption</span>.</label>
+                        <label htmlFor="alocohol">Select the option which best describes your <span className="tooltip" data-text={alcohol}>level of alcohol consumption</span>. <span className="material-symbols-rounded">help</span></label>
                         <select 
                             id="alcohol" 
                             name="alcohol"

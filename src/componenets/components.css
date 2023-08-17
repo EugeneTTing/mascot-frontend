@@ -151,23 +151,29 @@ select {
         padding: 8px 20px;
         font-family: inherit;
         color: whitesmoke;
-        background-color: #5b9e97;
+        background-color: #dc8484;
         border: none;
         border-radius: 4px;
 
         &:disabled {
-            background-color: #9cc4bc;
+            background-color: #e7acac;
         }
 
         &:not(:disabled):hover {
-            background-color: #04948c;
+            background-color: #db7976;
             cursor: pointer;
         }
     }
 }
 
+.center {
+    justify-content: center;
+}
+
 .material-symbols-rounded {
-    font-size: 20px
+    font-size: 20px;
+    position: relative;
+    top: 4px;
 }
 
 .icon-array-container {
@@ -180,7 +186,7 @@ select {
 
 .icons {
     display: grid;
-    grid-template-columns: repeat(25, 24px);
+    grid-template-columns: repeat(40, 24px);
     margin-bottom: 20px;
 }
 
@@ -199,19 +205,6 @@ select {
     > h3 {
         margin: 0;
     }
-}
-
-.baseline {
-    color: white;
-    text-shadow: -1px 1px 0 red,
-                1px 1px 0  red,
-                1px -1px 0 red,
-                -1px -1px 0 red;
-    
-}
-
-.additional {
-    color: red;
 }
 
 .display-container {
@@ -239,16 +232,16 @@ select {
     flex-flow: column nowrap;
     gap: 10px;
     margin: 20px 0px;
-}
 
-.text-container h2 {
-    margin: 0;
-    text-align: center;
-}
+    > h2 {
+        margin: 0;
+        text-align: center;
+    }
 
-.text-container p {
-    margin: 0;
-    text-align: center;
+    > p {
+        margin: 0;
+        text-align: center;
+    }
 }
 
 .tab-container {
@@ -261,17 +254,25 @@ select {
     padding: 6px 12px;
     font-family: inherit;
     border: none;
-    background-color: #9cc4bc;
+    background-color: #dc8484;
     border-radius: 10px;
     cursor: pointer;
     box-sizing: border-box;
+
+    &:hover {
+        background-color: #db7976;
+        cursor: pointer;
+    }
 }
 
 .tab-container button.active {
-    border: 3px solid #04948c;
+    border: 3px solid #d35b54;
     border-radius: 10px;
 }
 
+
+
+/* Imperial or metric units switch */
 .unit-switch {
     background-color: lightgray;
     padding: 2px 2px;
@@ -287,7 +288,7 @@ select {
         cursor: pointer;
 
         &.active {
-            background-color: #9cc4bc;
+            background-color: #dc8484;
         }
 
         &:not(.active):hover {
@@ -303,6 +304,8 @@ select {
     align-items: center;
 }
 
+
+/* Tooltip */
 .tooltip {
     position: relative;
     border-bottom: 1px dashed black;
@@ -334,6 +337,8 @@ select {
     opacity: 1;
 }
 
+
+
 .progress-bar {
     width: 100%;
     height: 30px;
@@ -349,7 +354,32 @@ select {
         border-bottom-left-radius: 15px;
         border-top-right-radius: 15px;
         border-bottom-right-radius: 15px;
-        background-color: #04948c;
+        background-color: #d35b54;
         transition: ease-in-out .4s width;
     }
+}
+
+.form-container {
+    margin: 40px 0px;
+}
+
+.formulation-container {
+    border-radius: 20px;
+    background-color: #fbdcdc;
+    padding: 10px 20px;
+    margin: 10px 10px;
+
+    > h2 {
+        margin: 5px 0px;
+    }
+
+    > p {
+        margin: 5px 0px;
+    }
+}
+
+.symptom {
+    text-align: center;
+    margin: 24px 0px;
+    font-size: 20px;
 }

@@ -181,7 +181,7 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="radio-question">
 
-                        <p>Antipsychotic medication</p>
+                        <p>Antipsychotic medication <span className="material-symbols-rounded">help</span></p>
 
                         <div className="radio-container">
 

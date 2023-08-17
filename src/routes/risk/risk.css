@@ -13,12 +13,13 @@
     padding: 8px 20px;
     font-family: inherit;
     color: whitesmoke;
-    background-color: #5b9e97;
+    background-color: #dc8484;
     border: none;
     border-radius: 4px;
-}
 
-.start-button:hover {
-    background-color: #04948c;
-    cursor: pointer;
+    &:hover {
+
+        background-color: #db7976;
+        cursor: pointer;
+    }
 }

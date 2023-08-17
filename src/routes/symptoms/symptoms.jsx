@@ -1,16 +1,20 @@
 import "./symptoms.css";
-import Questionnaire from "./questionnaire";
-import { useState } from "react";
-import SymptomResults from "./symptomResults";
+import SymptomTracker from "../../componenets/SymptomTracker";
 
 export default function Symptoms () {
 
-    const [completed, setCompleted] = useState(false);
 
     return (
         <>
+
             <h1>Symptoms</h1>
-            {completed ? <SymptomResults/> : <Questionnaire setCompleted={setCompleted}/>}
+
+            <p>The Greene Climacteric Scale is widely used to measure symptoms of 
+            menopause, and can be used to assess changes in symptoms 
+            before and after the commencing of HRT.</p>
+
+            <SymptomTracker/>
+
         </>
     )
 }

@@ -1,6 +1,6 @@
 img {
     display: block;
-    margin: auto;
+    margin: 100px auto 40px auto;
     width: 60%;
     max-width: 800px;
 }
@@ -13,6 +13,7 @@ img {
     letter-spacing: 0.1rem;
 }
 
-.green {
-    color: #04948c;
+
+.color {
+    color: #d35b54;
 }

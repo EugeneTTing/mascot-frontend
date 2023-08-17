@@ -8,7 +8,7 @@ export default function Root() {
     return (
         <>
             <div className="sidebar">
-                <img src="/images/alt_logo_no_text.svg" alt="logo"/>
+                <img src="/images/mascot_new.png" alt="logo"/>
                 <NavLink to="/" end>Home</NavLink>
                 <NavLink to={`about`}>About</NavLink>
                 <NavLink to={`risk`}>Risk Calculator</NavLink>
