@@ -18,11 +18,15 @@ const RiskDisplay = () => {
 
     const currentTab = tabNames[activeTab]
     const data = results[currentTab]
+
     const baseline = data.baseline.toFixed(1)
     const total = (data.baseline * data.hazard).toFixed(1)
+    
     const baseline_abs = baseline * 10
-    const additional_abs = ((total - baseline) * 10).toFixed(0)
-    const unaffected = total > baseline ? 1000 - total * 10 : 1000 - baseline_abs
+    const total_abs = total * 10
+
+    const additional_abs = total_abs - baseline_abs
+    const unaffected = total > baseline ? 1000 - total_abs : 1000 - baseline_abs
 
     let icons = []
     for (let i = 0; i < 1000; i++) {
@@ -71,7 +75,7 @@ const RiskDisplay = () => {
                     <div className="icon-legend">
 
                     {
-                        total >= baseline ?
+                        additional_abs > 0 ?
 
                         <>
                             <svg width="36" height="36">
