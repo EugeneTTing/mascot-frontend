@@ -246,28 +246,33 @@ select {
 
 .tab-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    padding: 10px 10px;
+    background-color: #e7acac;
+    border-radius: 20px;
 
-.tab-container button {
-    font-size: 20px;
-    padding: 6px 12px;
-    font-family: inherit;
-    border: none;
-    background-color: #dc8484;
-    border-radius: 10px;
-    cursor: pointer;
-    box-sizing: border-box;
-
-    &:hover {
-        background-color: #db7976;
+    > button {
+        font-size: 18px;
+        color: whitesmoke;
+        padding: 6px 12px;
+        font-family: inherit;
+        border: none;
+        background-color: #e7acac;
+        border-radius: 10px;
         cursor: pointer;
-    }
-}
+        box-sizing: border-box;
+        
+        &:hover {
+            background-color: #db7976;
+            cursor: pointer;
+        }
 
-.tab-container button.active {
-    border: 3px solid #d35b54;
-    border-radius: 10px;
+        &.active {
+            background-color: #d35b54;
+            border-radius: 10px;
+        }
+    }
 }
 
 
