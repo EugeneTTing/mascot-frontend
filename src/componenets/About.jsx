@@ -40,15 +40,15 @@ const About = () =>  {
                                 <>
                                     <input
                                         type="number"
-                                        id="heightimperial"
-                                        name="heightinches"
-                                        value={data.heightinches}
+                                        id="height"
+                                        name="heightfeet"
+                                        value={data.heightfeet}
                                         onChange={handleChange}
                                     />
                                     <p>feet</p>
                                     <input
                                         type="number"
-                                        id="heightimperial"
+                                        id="height"
                                         name="heightinches"
                                         value={data.heightinches}
                                         onChange={handleChange}

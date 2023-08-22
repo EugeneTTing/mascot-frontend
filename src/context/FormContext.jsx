@@ -17,7 +17,8 @@ export const FormProvider = ({ children }) => {
     const [data, setData] = useState({
         age: "",
         height: "",
-        heightinches: "",
+        heightfeet: "0",
+        heightinches: "0",
         weight: "",
         ethnicity: "",
         alcohol: "",
@@ -90,14 +91,12 @@ export const FormProvider = ({ children }) => {
         antidepressants: false,
     })
 
-    // console.log( Object.keys(data).filter(k => k.endsWith("yob") || k.endsWith("age")))
 
-    /* Form validation logic. Cannot move on to next page if some data invalid. */
+    // Form validation logic. Cannot move on to next page if some data invalid.
     const pageValid = [
 
         (
-            Object.values(data).slice(0, 2).every(Boolean) 
-            && Object.values(data).slice(3, 7).every(Boolean) 
+            Object.values(data).slice(0, 8).every(Boolean) 
             && data.age > 39 && data.age < 81
             && data.heightinches >= 0 && data.heightinches < 13
         ),
@@ -244,7 +243,7 @@ export const FormProvider = ({ children }) => {
         if (type === "radio" && (value === "true" || value === "false")) {
             setData(prevData => ({
                 ...prevData,
-                [name]: (value === "true")
+                [name]: value === "true"
             }))
         } else {
             setData(prevData => ({
@@ -253,9 +252,10 @@ export const FormProvider = ({ children }) => {
             }))
         }
         
+        // Auto complete parents' year of birth if alive
         if (name === "m_age" && !data.m_dead) {
             if (value !== "") {
-                let yob = (new Date().getFullYear() - parseInt(value))
+                let yob = (new Date().getFullYear() - parseInt(value)).toString()
                 setData(prevData => ({
                     ...prevData,
                     m_yob: yob
@@ -270,7 +270,7 @@ export const FormProvider = ({ children }) => {
 
         if (name === "f_age" && !data.f_dead) {
             if (value !== "") {
-                let yob = (new Date().getFullYear() - parseInt(value))
+                let yob = (new Date().getFullYear() - parseInt(value)).toString()
                 setData(prevData => ({
                     ...prevData,
                     f_yob: yob
@@ -291,11 +291,28 @@ export const FormProvider = ({ children }) => {
     const handleUnitChange = e => {
         const unit = e.target.name
         const value = e.target.value
-
+        
         if (unit === "weight") {
             setWeightUnit(value)
         } else {
             setHeightUnit(value)
+
+            // Ensure height values are not empty string for unused units
+            if (value === "ft") {
+                setData(prevData => ({
+                    ...prevData,
+                    height: "0",
+                    heightfeet: "",
+                    heightinches: ""
+                }))
+            } else {
+                setData(prevData => ({
+                    ...prevData,
+                    height: "",
+                    heightfeet: "0",
+                    heightinches: "0"
+                }))
+            }
         }
     }
 

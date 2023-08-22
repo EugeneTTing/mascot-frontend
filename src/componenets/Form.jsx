@@ -12,7 +12,9 @@ const Form = () => {
         page,
         setPage,
         data,
-        pageValid
+        pageValid,
+        heightUnit,
+        weightUnit
     } = useFormContext()
 
     const {
@@ -27,13 +29,49 @@ const Form = () => {
 
     const handleNext = () => setPage(prev => prev + 1)
 
+    function dataToJSON() {
+
+        // Convert to metric units if required
+        if (weightUnit === "lb") {
+            let newWeight = Math.round(parseFloat(data.weight) / 2.2).toString()
+            data.weight = newWeight
+        }
+
+        if (heightUnit === "ft") {
+            let newFeet = parseFloat(data.heightfeet * 30.48)
+            let newInches = parseFloat(data.heightinches * 2.54)
+            let newHeight = Math.round(newFeet + newInches).toString()
+            data.height = newHeight
+        }
+
+        // Delete properties from data to remove unneccesary or empty fields
+        [
+            "heightfeet",
+            "heightinches",
+            "m_br_cancer",
+            "m_br_cancer_2",
+            "m_ov_cancer",
+            "m_pa_cancer",
+            "f_pr_cancer",
+            "f_pa_cancer",
+            "has_children",
+            "menopause",
+            "coil"
+        ].forEach(p => delete data[p])
+
+        Object.keys(data).filter(key => data[key] === "").forEach(key => delete data[key])
+
+        return JSON.stringify(data)
+
+    }
+
     const handleSubmit = e => {
 
         e.preventDefault()
-        console.log(JSON.stringify(data))
 
+        // HTTP request to backend API
         let xhr = new XMLHttpRequest()
-        xhr.open("POST", "http://127.0.0.1:5000/risk", true)
+        xhr.open("POST", `${process.env.REACT_APP_API_URL}/risk`, true)
         xhr.setRequestHeader("Content-Type", "application/json")
 
         xhr.onreadystatechange = function () {
@@ -45,13 +83,16 @@ const Form = () => {
             }
         }
 
-        const dataJSON = JSON.stringify(data)
+        const dataJSON = dataToJSON()
+
+        console.log(dataJSON)
 
         xhr.send(dataJSON)
 
         setSubmitted(true)
     }
 
+    // Sets width of form progress bar
     useEffect(() => {
         let elem = document.getElementById("progress")
         let width = (page / 4) * 100 + "%"

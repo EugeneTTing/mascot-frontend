@@ -316,7 +316,7 @@ select {
     border-bottom: 1px dashed black;
 }
 
-.tooltip:before {
+.tooltip::before {
     content: attr(data-text); 
     position:absolute;
 
@@ -338,7 +338,7 @@ select {
     transition: 0.3s opacity;
 }
 
-.tooltip:hover:before {
+.tooltip:hover::before {
     opacity: 1;
 }
 
