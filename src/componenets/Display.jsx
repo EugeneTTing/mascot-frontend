@@ -208,8 +208,8 @@ const Display = () => {
             <div className="tab-container">
                 <button className={`${activeTab === 0 ? "active" : ""}`} onClick={() => setActiveTab(0)}>Summary</button>
                 <button className={`${activeTab === 1 ? "active" : ""}`} onClick={() => setActiveTab(1)}>Breast Cancer</button>
-                <button className={`${activeTab === 2 ? "active" : ""}`} onClick={() => setActiveTab(2)}>Coronary Heart Disease</button>
-                <button className={`${activeTab === 3 ? "active" : ""}`} onClick={() => setActiveTab(3)}>Stroke</button>
+                <button className={`${activeTab === 2 ? "active" : ""}`} onClick={() => setActiveTab(2)} disabled>Coronary Heart Disease</button>
+                <button className={`${activeTab === 3 ? "active" : ""}`} onClick={() => setActiveTab(3)} disabled>Stroke</button>
                 <button className={`${activeTab === 4 ? "active" : ""}`} onClick={() => setActiveTab(4)}>Venous Thrombosis</button>
                 <button className={`${activeTab === 5 ? "active" : ""}`} onClick={() => setActiveTab(5)}>Fracture</button>
             </div>
