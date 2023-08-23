@@ -134,20 +134,21 @@ const RiskDisplay = () => {
 const Summary = () => {
 
     const {
-        results
+        results,
+        tabNames
     } = useRiskContext()
 
-    // const hazards = Object.values(results).map(val => val.hazard)
 
-    const bars = Object.values(results).map((res, index) =>
+    const bars = Object.values(tabNames).map((name, index) =>
         <div 
-            className={`bar ${res.hazard > 1 ? "increased-risk" : "reduced-risk"}`}
+            className={`bar ${results[name].hazard > 1 ? "increased-risk" : "reduced-risk"}`}
             key={index}
             style={{
-                width: (Math.abs(1 - res.hazard)/0.5) * 100 + '%',
+                width: (Math.abs(1 - results[name].hazard)/0.5) * 100 + '%',
+                gridRowStart: index + 1
             }}
             >
-            <span data-ratio={res.hazard}></span>
+            <span data-ratio={results[name].hazard}></span>
         </div>
     )
 
@@ -176,8 +177,8 @@ const Summary = () => {
                 </div>
                 <div className="labels">
                     <p>Breast Cancer</p>
-                    <p>Stroke</p>
                     <p>CHD</p>
+                    <p>Stroke</p>
                     <p>VTE</p>
                     <p>Fracture</p>
                 </div>
