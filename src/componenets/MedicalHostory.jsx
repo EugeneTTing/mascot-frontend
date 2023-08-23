@@ -31,11 +31,11 @@ const MedicalHistory = () => {
                             </div>
                             <div className="radio-answer">
                                 <input type="radio" id="diabetes_type1" name="diabetes" value="1" onChange={handleChange} checked={data.diabetes === "1"}/>
-                                <label htmlFor="diabetes_none">Type 1</label>
+                                <label htmlFor="diabetes_type1">Type 1</label>
                             </div>
                             <div className="radio-answer">
                                 <input type="radio" id="diabetes_type2" name="diabetes" value="2" onChange={handleChange} checked={data.diabetes === "2"}/>
-                                <label htmlFor="diabetes_none">Type 2</label>
+                                <label htmlFor="diabetes_type2">Type 2</label>
                             </div>
 
                         </div>
