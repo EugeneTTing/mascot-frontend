@@ -18,11 +18,15 @@ const RiskDisplay = () => {
 
     const currentTab = tabNames[activeTab]
     const data = results[currentTab]
+
     const baseline = data.baseline.toFixed(1)
     const total = (data.baseline * data.hazard).toFixed(1)
+    
     const baseline_abs = baseline * 10
-    const additional_abs = ((total - baseline) * 10).toFixed(0)
-    const unaffected = total > baseline ? 1000 - total * 10 : 1000 - baseline_abs
+    const total_abs = total * 10
+
+    const additional_abs = total_abs - baseline_abs
+    const unaffected = total > baseline ? 1000 - total_abs : 1000 - baseline_abs
 
     let icons = []
     for (let i = 0; i < 1000; i++) {
@@ -71,7 +75,7 @@ const RiskDisplay = () => {
                     <div className="icon-legend">
 
                     {
-                        total >= baseline ?
+                        additional_abs > 0 ?
 
                         <>
                             <svg width="36" height="36">
@@ -128,8 +132,64 @@ const RiskDisplay = () => {
 }
 
 const Summary = () => {
+
+    const {
+        results
+    } = useRiskContext()
+
+    // const hazards = Object.values(results).map(val => val.hazard)
+
+    const bars = Object.values(results).map((res, index) =>
+        <div 
+            className={`bar ${res.hazard > 1 ? "increased-risk" : "reduced-risk"}`}
+            key={index}
+            style={{
+                width: (Math.abs(1 - res.hazard)/0.5) * 100 + '%',
+            }}
+            >
+            <span data-ratio={res.hazard}></span>
+        </div>
+    )
+
+    // console.log(hazards)
+
     const content = (
-        <p>Summary</p>
+
+        <>
+            <div>
+                <p>This is a summary of the effects HRT use has on your health risks, 
+                    expressed as hazard ratios. Hazard ratios measure how an intervention,
+                    in this case HRT, effects health outcomes over time. A hazard ratio 
+                    larger than 1 means the health outcome is more likely to occur in 
+                    people who have used HRT, whilst a hazard ratio less than 1 means 
+                    the health outcome is less likely to occur.</p>
+                <p>Whilst hazard ratios are helpful in quickly understanding the overall
+                    effects of an intervention, they can be misleading. They do not show
+                    the absolute risk of health outcomes, which may still be very small 
+                    if the baseline risk (risk without HRT use) is low. Click on a tab 
+                    above view the absolute risks for each health outcome</p>
+            </div>
+            
+            <div className="summary-container">
+                <div className="bar-container">
+                    {bars}
+                </div>
+                <div className="labels">
+                    <p>Breast Cancer</p>
+                    <p>Stroke</p>
+                    <p>CHD</p>
+                    <p>VTE</p>
+                    <p>Fracture</p>
+                </div>
+                <div className="axes">
+                    <p>0.5</p>
+                    <p style={{justifySelf:"center"}}>1.0</p>
+                    <p style={{justifySelf:"end"}}>1.5</p>
+                </div>
+            </div>
+
+        </>
+        
     )
 
     return content
