@@ -441,6 +441,7 @@ select {
 .bar {
     height: 40px;
     grid-column-end: span 1;
+    grid-row-end: span 1;
 
     > span {
         display: block;
