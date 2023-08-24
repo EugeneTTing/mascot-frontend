@@ -16,18 +16,18 @@ const BoneCancer = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="cancer">
+                        <p>
                             Have you been diagnosed with any cancer?
-                        </label>
+                        </p>
                         <BinaryRadio name="cancer"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="biopsy">
+                        <p>
                             Have you had a biopsy for a breast lump?
-                        </label>
+                        </p>
                         <BinaryRadio name="biopsy"/>
                     </div>
                 </div>
@@ -37,9 +37,9 @@ const BoneCancer = () => {
 
                         <div className="question-wrapper">
                             <div className="number-question">
-                                <label htmlFor="num_biopsy">
+                                <p>
                                     How many biopsies have you had?
-                                </label>
+                                </p>
                                 <input
                                     type="number"
                                     id="num_biopsy"
@@ -52,9 +52,9 @@ const BoneCancer = () => {
 
                         <div className="question-wrapper">
                             <div className="binary-question">
-                                <label htmlFor="atyp_hyperplasia">
+                                <p>
                                     With atypical hyperplasia?
-                                </label>
+                                </p>
                                 <BinaryRadio name="atyp_hyperplasia"/>
                             </div>
                         </div>
@@ -64,63 +64,63 @@ const BoneCancer = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="ra">
+                        <p>
                             Have you been diagnosed with rheumatoid arthritis?
-                        </label>
+                        </p>
                         <BinaryRadio name="ra"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="falls">
+                        <p>
                             Do you have a history of falls?
-                        </label>
+                        </p>
                         <BinaryRadio name="falls"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="cvd">
+                        <p>
                             Have you ever had a heart attack, angina, stroke, or transient ischaemic attack (TIA)?
-                        </label>
+                        </p>
                         <BinaryRadio name="cvd"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="heart_failure">
+                        <p>
                             Have you had heart failure?
-                        </label>
+                        </p>
                         <BinaryRadio name="heart_failure"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="varicose_vein">
+                        <p>
                             Have you had varicose vein surgery?
-                        </label>
+                        </p>
                         <BinaryRadio name="varicose_vein"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="af">
+                        <p>
                             Do you have atrial fibrillation?
-                        </label>
+                        </p>
                         <BinaryRadio name="af"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="hypert_treat">
+                        <p>
                             Are you on blood pressure treatment?
-                        </label>
+                        </p>
                         <BinaryRadio name="hypert_treat"/>
                     </div>
                 </div>

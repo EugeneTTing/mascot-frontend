@@ -71,9 +71,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="liver">
+                        <p>
                             Chronic liver disease
-                        </label>
+                        </p>
                         <BinaryRadio name="liver"/>
 
                     </div>
@@ -82,9 +82,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="parkin">
+                        <p>
                             Parkinson's disease
-                        </label>
+                        </p>
                         <BinaryRadio name="parkin"/>
 
                     </div>
@@ -93,9 +93,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="migraine">
+                        <p>
                             Migraines
-                        </label>
+                        </p>
                         <BinaryRadio name="migraine"/>
 
                     </div>
@@ -104,9 +104,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="sle">
+                        <p>
                             Systematic lupus erythematosus (SLE)
-                        </label>
+                        </p>
                         <BinaryRadio name="sle"/>
 
                     </div>
@@ -115,9 +115,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="semi">
+                        <p>
                             Severe mental illness
-                        </label>
+                        </p>
                         <BinaryRadio name="semi"/>
 
                     </div>
@@ -126,9 +126,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="copd">
+                        <p>
                             Chronic obstructive pulmonery disease or asthma
-                        </label>
+                        </p>
                         <BinaryRadio name="copd"/>
 
                     </div>
@@ -137,9 +137,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="malabsorption">
+                        <p>
                             Malabsorption e.g. Crohn's or ulcerative colitis
-                        </label>
+                        </p>
                         <BinaryRadio name="malabsorption"/>
 
                     </div>
@@ -148,9 +148,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="dementia">
+                        <p>
                             Dementia
-                        </label>
+                        </p>
                         <BinaryRadio name="dementia"/>
 
                     </div>
@@ -159,9 +159,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="endocrine">
+                        <p>
                             Endocrine conditions eg thyrotoxocosis, hyperparathyroidism, Cushing's syndrome
-                        </label>
+                        </p>
                         <BinaryRadio name="endocrine"/>
 
                     </div>
@@ -170,9 +170,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="hospital">
+                        <p>
                             Been admitted to the hospital in the past 6 months
-                        </label>
+                        </p>
                         <BinaryRadio name="hospital"/>
 
                     </div>
@@ -210,9 +210,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="steroids">
+                        <p>
                             Regular medical steroids
-                        </label>
+                        </p>
                         <BinaryRadio name="steroids"/>
 
                     </div>
@@ -221,9 +221,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="tamoxifen">
+                        <p>
                             Tamoxifen
-                        </label>
+                        </p>
                         <BinaryRadio name="tamoxifen"/>
 
                     </div>
@@ -232,9 +232,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="anticonvulsants">
+                        <p>
                             Anticonvulsants
-                        </label>
+                        </p>
                         <BinaryRadio name="anticonvulsants"/>
 
                     </div>
@@ -243,9 +243,9 @@ const MedicalHistory = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="antidepressants">
+                        <p>
                             Antidepressants
-                        </label>
+                        </p>
                         <BinaryRadio name="antidepressants"/>
                         
                     </div>

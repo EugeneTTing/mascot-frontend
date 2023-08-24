@@ -47,6 +47,10 @@
     gap: 15px;
     justify-content: space-between;
     align-items: baseline;
+
+    > P {
+        margin: 0;
+    }
 }
 
 .radio-question {
@@ -246,7 +250,6 @@ select {
 
 .tab-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
     gap: 5px;
     padding: 10px 10px;
     background-color: #e7acac;
@@ -276,7 +279,13 @@ select {
     }
 }
 
+.six-button {
+    grid-template-columns: repeat(6, 1fr);
+}
 
+.two-button {
+    grid-template-columns: repeat(2, 1fr);
+}
 
 /* Imperial or metric units switch */
 .unit-switch {
@@ -479,7 +488,8 @@ select {
         height: 100%;
         width: 100%;
         background-color:#e7acac;
-        transition: background-color opacity 0.2s;
+        transition: background-color 0.2s;
+        transition: opacity 0.2s;
 
         &:hover{
             background-color: #d35b54;
@@ -498,7 +508,6 @@ select {
         }
     }
 }
-
 
 
 .reduced-risk {

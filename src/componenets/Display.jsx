@@ -1,11 +1,7 @@
 import "./components.css"
 import useRiskContext from "../hooks/useRiskContext"
+import { useState } from "react"
 
-// <span 
-//     key={i}
-//     className={`material-symbols-rounded ${i < baseline ? "baseline" : ""} ${i >= baseline && i < total ? "additional" : ""}`}>
-//     woman
-// </span>
 
 const RiskDisplay = () => {
 
@@ -133,18 +129,19 @@ const RiskDisplay = () => {
 
 const Summary = () => {
 
+    const [barUnits, setBarUnits] = useState("abs")
+
     const {
         results,
         tabNames
     } = useRiskContext()
 
-
-    const bars = Object.values(tabNames).map((name, index) =>
+    const hazardBars = Object.values(tabNames).map((name, index) =>
         <div 
             className={`bar ${results[name].hazard > 1 ? "increased-risk" : "reduced-risk"}`}
             key={index}
             style={{
-                width: (Math.abs(1 - results[name].hazard)/0.5) * 100 + '%',
+                width: (Math.abs(1 - results[name].hazard)/1) * 100 + '%',
                 gridRowStart: index + 1
             }}
             >
@@ -152,28 +149,62 @@ const Summary = () => {
         </div>
     )
 
-    // console.log(hazards)
+    const absBars = Object.values(tabNames).map((name, index) => 
+        <div 
+            className={`bar ${results[name].hazard > 1 ? "increased-risk" : "reduced-risk"}`}
+            key={index}
+            style={{
+                width: Math.abs(results[name].baseline * 10 * (results[name].hazard - 1)) / 20 * 100 + '%',
+                gridRowStart: index + 1
+            }}
+            >
+            <span data-ratio={(results[name].baseline * 10 * (results[name].hazard - 1)).toFixed(0)}></span>
+        </div>
+    )
 
     const content = (
 
         <>
+
+            <div className="tab-container two-button">
+                <button className={`${barUnits === "abs" ? "active" : ""}`} onClick={() => setBarUnits("abs")}>Absolute Risk</button>
+                <button className={`${barUnits === "haz" ? "active" : ""}`} onClick={() => setBarUnits("haz")}>Hazard Ratios</button>
+            </div>
+
             <div>
-                <p>This is a summary of the effects HRT use has on your health risks, 
-                    expressed as hazard ratios. Hazard ratios measure how an intervention,
-                    in this case HRT, effects health outcomes over time. A hazard ratio 
-                    larger than 1 means the health outcome is more likely to occur in 
-                    people who have used HRT, whilst a hazard ratio less than 1 means 
-                    the health outcome is less likely to occur.</p>
-                <p>Whilst hazard ratios are helpful in quickly understanding the overall
-                    effects of an intervention, they can be misleading. They do not show
-                    the absolute risk of health outcomes, which may still be very small 
-                    if the baseline risk (risk without HRT use) is low. Click on a tab 
-                    above view the absolute risks for each health outcome</p>
+                {
+                    barUnits === "abs" ?
+                    <>
+                        <p>This is a summary of the effects HRT use has on your health risks, 
+                        expressed as absolute risk change in a population of 1000 women. Absolute 
+                        risk change measures how many additional (or fewer) women experience a 
+                        health outcome due to an intervention, in this case HRT. A positive change 
+                        means more women are likely to experience the health outcome due to HRT use,
+                        whilst a negative changes means fewer women are likely to experience the 
+                        outcome.</p>
+                        <p>Absolute risk change should always be considered alongside the baseline risk 
+                        of an outcome. Although HRT may increase the risk of certain outcomes, the actual 
+                        risk you face may still be very low.</p>
+                    </>
+                    :
+                    <>
+                        <p>This is a summary of the effects HRT use has on your health risks, 
+                        expressed as hazard ratios. Hazard ratios measure how an intervention,
+                        in this case HRT, effects health outcomes over time. A hazard ratio 
+                        larger than 1 means the health outcome is more likely to occur in 
+                        people who have used HRT, whilst a hazard ratio less than 1 means 
+                        the health outcome is less likely to occur.</p>
+                        <p>Whilst hazard ratios are helpful in quickly understanding the overall
+                        effects of an intervention, they can be misleading. They do not show
+                        the absolute risk of health outcomes, which may still be very small 
+                        if the baseline risk (risk without HRT use) is low.</p>
+                    </>
+                }
             </div>
             
             <div className="summary-container">
                 <div className="bar-container">
-                    {bars}
+                    {barUnits === "abs" ? absBars : hazardBars}
                 </div>
                 <div className="labels">
                     <p>Breast Cancer</p>
@@ -183,9 +214,12 @@ const Summary = () => {
                     <p>Fracture</p>
                 </div>
                 <div className="axes">
-                    <p>0.5</p>
-                    <p style={{justifySelf:"center"}}>1.0</p>
-                    <p style={{justifySelf:"end"}}>1.5</p>
+                    <p>{barUnits === "abs" ? "-20" : "0.0"}</p>
+                    <p style={{justifySelf:"center"}}>{barUnits === "abs" ? "0" : "1.0"}</p>
+                    <p style={{justifySelf:"end"}}>{barUnits === "abs" ? "+20" : "2.0"}</p>
+                    <p><i>reduced risk</i></p>
+                    <p style={{justifySelf:"center"}}><i>no change</i></p>
+                    <p style={{justifySelf:"end"}}><i>increased risk</i></p>
                 </div>
             </div>
 
@@ -206,7 +240,7 @@ const Display = () => {
     const content = (
 
         <div className="display-container">
-            <div className="tab-container">
+            <div className="tab-container six-button">
                 <button className={`${activeTab === 0 ? "active" : ""}`} onClick={() => setActiveTab(0)}>Summary</button>
                 <button className={`${activeTab === 1 ? "active" : ""}`} onClick={() => setActiveTab(1)}>Breast Cancer</button>
                 <button className={`${activeTab === 2 ? "active" : ""}`} onClick={() => setActiveTab(2)} disabled>Coronary Heart Disease</button>

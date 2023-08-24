@@ -16,27 +16,27 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="fh_cvd">
+                        <p>
                             Do you have a first relative who suffers from angina or heart attack younger than 60?
-                        </label>
+                        </p>
                         <BinaryRadio name="fh_cvd"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="fh_osteo">
+                        <p>
                             Do either of your parents suffer from osteoporosis or hip fracture?
-                        </label>
+                        </p>
                         <BinaryRadio name="fh_osteo"/>
                     </div>
                 </div>
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="ash">
+                        <p>
                             Do you have any Ashkenazi Jewish ancestors?
-                        </label>
+                        </p>
                         <BinaryRadio name="ash"/>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="m_dead">Is she deceased?</label>
+                        <p>Is she deceased?</p>
                         <BinaryRadio name="m_dead"/>
                     </div>
                 </div>
@@ -81,9 +81,9 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="m_br_cancer">
+                        <p>
                             Does your mother have breast cancer?
-                        </label>
+                        </p>
                         <BinaryRadio name="m_br_cancer"/>
                     </div>
                 </div>
@@ -92,9 +92,9 @@ const Family = () => {
                     <>
                         <div className="question-wrapper conditional">
                             <div className="number-question">
-                                <label htmlFor="m_br_cancer_age">
+                                <p>
                                     At what age was the diagnosis?
-                                </label>
+                                </p>
                                 <input
                                     type="number"
                                     id="m_br_cancer_age"
@@ -107,9 +107,9 @@ const Family = () => {
 
                         <div className="question-wrapper conditional">
                             <div className="binary-question">
-                                <label htmlFor="m_br_cancer_2">
+                                <p>
                                     Does your mother have a second (contralateral) breast cancer diagnosis?
-                                </label>
+                                </p>
                                 <BinaryRadio name="m_br_cancer_2"/>
                             </div>
                         </div>
@@ -136,9 +136,9 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="m_ov_cancer">
+                        <p>
                             Does your mother have ovarian cancer?
-                        </label>
+                        </p>
                         <BinaryRadio name="m_ov_cancer"/>
                     </div>
                 </div>
@@ -162,9 +162,9 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="m_pa_cancer">
+                        <p>
                             Does your mother have pancreatic cancer?
-                        </label>
+                        </p>
                         <BinaryRadio name="m_pa_cancer"/>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="f_dead">Is he deceased?</label>
+                        <p>Is he deceased?</p>
                         <BinaryRadio name="f_dead"/>
                     </div>
                 </div>
@@ -226,9 +226,9 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="f_pr_cancer">
+                        <p>
                             Does your father have prostate cancer?
-                        </label>
+                        </p>
                         <BinaryRadio name="f_pr_cancer"/>
                     </div>
                 </div>
@@ -252,9 +252,9 @@ const Family = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="f_pa_cancer">
+                        <p>
                             Does your father have pancreatic cancer?
-                        </label>
+                        </p>
                         <BinaryRadio name="f_pa_cancer"/>
                     </div>
                 </div>

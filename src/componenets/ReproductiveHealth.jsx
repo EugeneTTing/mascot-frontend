@@ -81,9 +81,9 @@ const ReproductiveHealth = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="has_children">
+                        <p>
                             Do you have children?
-                        </label>
+                        </p>
                         <BinaryRadio name="has_children"/>
 
                     </div>
@@ -131,9 +131,9 @@ const ReproductiveHealth = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="menopause">
+                        <p>
                             Have you <span className="tooltip" data-text={menopause_text}>reached menopause</span>? <span className="material-symbols-rounded">help</span>
-                        </label>
+                        </p>
                         <BinaryRadio name="menopause"/>
 
                     </div>
@@ -160,9 +160,9 @@ const ReproductiveHealth = () => {
 
                 <div className="question-wrapper">
                     <div className="binary-question">
-                        <label htmlFor="hysterectomy">
+                        <p>
                             Have you had a hysterectomy?
-                        </label>
+                        </p>
                         <BinaryRadio name="hysterectomy"/>
                     </div>
                 </div>
@@ -244,9 +244,9 @@ const ReproductiveHealth = () => {
                 <div className="question-wrapper">
                     <div className="binary-question">
 
-                        <label htmlFor="coil">
+                        <p>
                             Do you currently have a coil?
-                        </label>
+                        </p>
                         <BinaryRadio name="coil"/>
 
                     </div>
@@ -258,9 +258,9 @@ const ReproductiveHealth = () => {
                         <div className="question-wrapper conditional">
                             <div className="binary-question">
 
-                                <label htmlFor="coil_ius">
+                                <p>
                                     Does it add progesterone, i.e. intra-uterine system (e.g. Mirena)?
-                                </label>
+                                </p>
                                 <BinaryRadio name="coil_ius"/>
 
                             </div>
