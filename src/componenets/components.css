@@ -316,13 +316,43 @@ select {
 .tooltip {
     position: relative;
     border-bottom: 1px dashed black;
+
+    &::before {
+        content: attr(data-text); 
+        position:absolute;
+        visibility: hidden;
+
+        /* Tooltip position */
+        left: 100%;
+        bottom: 100%;
+        transform: translateX(-75%);
+        margin-bottom: 5px;
+
+        width: 200%;
+        padding:10px;
+        border-radius:10px;
+        background:gray;
+        color: #fff;
+        text-align:center;
+        box-sizing: border-box;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    &:hover::before {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
-.tooltip::before {
+
+
+/* .tooltip::before {
     content: attr(data-text); 
     position:absolute;
 
-    /* Tooltip position */
+    Tooltip position 
     left: 100%;
     bottom: 100%;
     transform: translateX(-75%);
@@ -342,17 +372,18 @@ select {
 
 .tooltip:hover::before {
     opacity: 1;
-}
+} */
 
 
 
 .progress-bar {
     width: 100%;
-    height: 30px;
+    height: 40px;
     background-color: lightgray;
     border-radius: 25px;
     padding: 10px;
     box-shadow: inset 0 -2px 2px rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
 
     > span {
         display: block;

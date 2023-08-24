@@ -76,16 +76,14 @@ const Form = () => {
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(this.responseText)
                 let res = JSON.parse(this.responseText)
+                console.log(res)
                 setResults(res)
                 setReceivedResult(true)
             }
         }
 
         const dataJSON = dataToJSON()
-
-        console.log(dataJSON)
 
         xhr.send(dataJSON)
 
