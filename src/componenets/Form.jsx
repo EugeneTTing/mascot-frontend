@@ -78,8 +78,8 @@ const Form = () => {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 let res = JSON.parse(this.responseText)
                 console.log(res)
-                // setResults(res)
-                // setReceivedResult(true)
+                setResults(res)
+                setReceivedResult(true)
             }
         }
 
@@ -87,7 +87,7 @@ const Form = () => {
 
         xhr.send(dataJSON)
 
-        // setSubmitted(true)
+        setSubmitted(true)
     }
 
     // Sets width of form progress bar
