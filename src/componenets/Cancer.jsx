@@ -53,60 +53,6 @@ const Cancer = () => {
 
                         }
 
-                        <div className="question-wrapper conditional">
-                            <div className="binary-question">
-                                <p>
-                                    Have you been diagnosed with ovarian cancer?
-                                </p>
-                                <BinaryRadio name="t_ov_cancer"/>
-                            </div>
-                        </div>
-
-                        {data.t_ov_cancer &&
-
-                            <div className="question-wrapper conditional2" data-error={"Age of diagnosis must be greater than zero, and smaller than your age."}>
-                                <div className="number-question">
-                                    <label htmlFor="t_ov_cancer_age">
-                                        At what age was the ovarian cancer diagnosis?
-                                    </label>
-                                    <input
-                                        type="number"
-                                        id="t_ov_cancer_age"
-                                        name="t_ov_cancer_age"
-                                        value={data.t_ov_cancer_age}
-                                        onChange={handleChange}/>
-                                </div>
-                            </div>
-
-                        }
-
-                        <div className="question-wrapper conditional">
-                            <div className="binary-question">
-                                <p>
-                                    Have you been diagnosed with pancreatic cancer?
-                                </p>
-                                <BinaryRadio name="t_pa_cancer"/>
-                            </div>
-                        </div>
-
-                        {data.t_pa_cancer &&
-
-                            <div className="question-wrapper conditional2" data-error={"Age of diagnosis must be greater than zero, and smaller than your age."}>
-                                <div className="number-question">
-                                    <label htmlFor="t_pa_cancer_age">
-                                        At what age was the pancreatic cancer diagnosis?
-                                    </label>
-                                    <input
-                                        type="number"
-                                        id="t_pa_cancer_age"
-                                        name="t_pa_cancer_age"
-                                        value={data.t_pa_cancer_age}
-                                        onChange={handleChange}/>
-                                </div>
-                            </div>
-
-                        }
-
                     </>
                 }
 

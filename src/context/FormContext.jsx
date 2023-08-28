@@ -200,22 +200,6 @@ export const FormProvider = ({ children }) => {
                 }
             }
 
-            if (data.t_ov_cancer) {
-                const ov = document.getElementById("t_ov_Cancer_age")
-                if (parseInt(ov.value) < 0 || parseInt(ov.value) > parseInt(data.age)) {
-                    ov.className = "invalid"
-                    valid = false
-                }
-            }
-
-            if (data.t_pa_cancer) {
-                const pa = document.getElementById("t_pa_cancer_age")
-                if (parseInt(pa.value) < 0 || parseInt(pa.value) > parseInt(data.age)) {
-                    pa.className = "invalid"
-                    valid = false
-                }
-            }
-
             if (data.biopsy) {
                 const num_biop = document.getElementById("num_biopsy")
                 if (parseInt(num_biop) < 0) {
@@ -268,8 +252,8 @@ export const FormProvider = ({ children }) => {
     const [data, setData] = useState({
         age: "",
         height: "",
-        heightfeet: "0",
-        heightinches: "0",
+        heightfeet: "",
+        heightinches: "",
         weight: "",
         ethnicity: "",
         alcohol: "",
@@ -313,10 +297,6 @@ export const FormProvider = ({ children }) => {
         cancer: false,
         t_br_cancer: false,
         t_br_cancer_age: "",
-        t_ov_cancer: false,
-        t_ov_cancer_age: "",
-        t_pa_cancer: false,
-        t_pa_cancer_age: "",
         biopsy: false,
         num_biopsy: "",
         atyp_hyperplasia: false,
@@ -354,7 +334,8 @@ export const FormProvider = ({ children }) => {
     const pageComplete = [
 
         (
-            Object.values(data).slice(0, 8).every(Boolean) 
+            [data.age, data.weight, data.ethnicity, data.alcohol, data.smoking].every(Boolean) &&
+            (data.height || (data.heightfeet && data.heightinches))
         ),
 
         (
@@ -595,6 +576,11 @@ export const FormProvider = ({ children }) => {
         
         if (unit === "weight") {
             setWeightUnit(value)
+
+            setData(prevData => ({
+                ...prevData,
+                weight: ""
+            }))
         } else {
             setHeightUnit(value)
 
@@ -602,7 +588,7 @@ export const FormProvider = ({ children }) => {
             if (value === "ft") {
                 setData(prevData => ({
                     ...prevData,
-                    height: "0",
+                    height: "",
                     heightfeet: "",
                     heightinches: ""
                 }))
@@ -610,8 +596,8 @@ export const FormProvider = ({ children }) => {
                 setData(prevData => ({
                     ...prevData,
                     height: "",
-                    heightfeet: "0",
-                    heightinches: "0"
+                    heightfeet: "",
+                    heightinches: ""
                 }))
             }
         }
