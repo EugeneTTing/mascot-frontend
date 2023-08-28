@@ -1,6 +1,7 @@
 import useFormContext from "../hooks/useFormContext"
 import About from "./About"
-import BoneCancer from "./BoneCancer"
+import BoneHeart from "./BoneHeart"
+import Cancer from "./Cancer"
 import Family from "./Family"
 import MedicalHistory from "./MedicalHostory"
 import ReproductiveHealth from "./ReproductiveHealth"
@@ -15,8 +16,9 @@ const FormPages = () => {
         0: <About/>,
         1: <Family/>,
         2: <ReproductiveHealth/>,
-        3: <BoneCancer/>,
-        4: <MedicalHistory/>
+        3: <Cancer/>,
+        4: <BoneHeart/>,
+        5: <MedicalHistory/>
     }
 
     const content = (

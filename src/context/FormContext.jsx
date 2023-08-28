@@ -8,12 +8,263 @@ export const FormProvider = ({ children }) => {
         0: "About You",
         1: "Family History",
         2: "Reproductive Health",
-        3: "Cancer, Bone, and Heart Health",
-        4: "Medical History"
+        3: "Cancer Health",
+        4: "Bone and Heart Health",
+        5: "Medical History"
     }
 
     const [page, setPage] = useState(0)
 
+    /* Object literal for data validation. Key corresponds to each page of form,
+    values are functions which returns a boolean value depending on validity of 
+    data. Also sets invalid class on inputs to display error message. */
+    const validate = {
+        0: function() { // About page
+            let valid = true
+
+            // Age must be between 40 and 80
+            const age = document.getElementById("age")
+            if (parseInt(age.value) < 40 || parseInt(age.value) > 80) {
+                age.className = "invalid"
+                valid = false
+            }
+
+            // Height (cm and feet) must be larger than 0
+            const height = document.getElementById("height")
+            if (heightUnit === "cm" && parseInt(height.value) < 0) {
+                height.className = "invalid"
+                valid = false
+            }
+            const feet = document.getElementById("heightfeet")
+            if (heightUnit === "ft" && parseInt(feet.value) < 0) {
+                feet.className = "invalid"
+                valid = false 
+            }
+
+            // Height (inches) must be between 0 and 11
+            const inches = document.getElementById("heightinches")
+            if (heightUnit === "ft" && (parseInt(inches.value) < 0 || parseInt(inches.value) > 11)) {
+                inches.className = "invalid"
+                valid = false 
+            }
+            
+            return valid
+        },
+        1: function() { // Family history
+            let valid = true
+
+            if (data.m_dead) { // If dead, mother's age + yob must be smaller than current year
+                const m_yob = document.getElementById("m_yob")
+                if (parseInt(m_yob.value) + parseInt(data.m_age) > new Date().getFullYear() || parseInt(m_yob.value) < 0) {
+                    m_yob.className = "invalid"
+                    valid = false
+                }
+            } else { // Mother's age must be larger than target's age
+                const m_age = document.getElementById("m_age")
+                if (parseInt(m_age.value) < parseInt(data.age) || parseInt(m_age.value) < 0) {
+                    m_age.className = "invalid"
+                    valid = false
+                }
+            }
+
+            // Age of diagnosis for cancers cannot exceed age at last follow up
+            if (data.m_br_cancer) {
+                const br_age = document.getElementById("m_br_cancer_age")
+                if (parseInt(br_age.value) > parseInt(data.m_age) || parseInt(br_age.value) < 0) {
+                    br_age.className = "invalid"
+                    valid  = false
+                }
+            }
+
+            if (data.m_br_cancer_2) {
+                const br2_age = document.getElementById("m_br_cancer_2_age")
+                if (parseInt(br2_age.value) > parseInt(data.m_age) || parseInt(br2_age.value) < 0) {
+                    br2_age.className = "invalid"
+                    valid  = false
+                } 
+            }
+
+            if (data.m_ov_cancer) {
+                const ov_age = document.getElementById("m_ov_cancer_age")
+                if (parseInt(ov_age.value) > parseInt(data.m_age) || parseInt(ov_age.value) < 0) {
+                    ov_age.className = "invalid"
+                    valid  = false
+                }
+            }
+
+            if (data.m_pa_cancer) {
+                const pa_age = document.getElementById("m_pa_cancer_age")
+                if (parseInt(pa_age.value) > parseInt(data.m_age) || parseInt(pa_age.value) < 0) {
+                    pa_age.className = "invalid"
+                    valid  = false
+                }
+            }
+
+            if (data.f_dead) { // If dead, father's age + yob must be smaller than current year
+                const f_yob = document.getElementById("f_yob")
+                if (parseInt(f_yob.value) + parseInt(data.f_age) > new Date().getFullYear() || parseInt(f_yob.value) < 0) {
+                    f_yob.className = "invalid"
+                    valid = false
+                }
+            } else { // Father's age must be larger than target's age
+                const f_age = document.getElementById("f_age")
+                if (parseInt(f_age.value) < parseInt(data.age) || parseInt(f_age.value) < 0) {
+                    f_age.className = "invalid"
+                    valid = false
+                }
+            }
+
+            // Age of diagnosis for cancers cannot exceed age at last follow up
+            if (data.f_pr_cancer) {
+                const pr_age = document.getElementById("f_pr_cancer_age")
+                if (parseInt(pr_age.value) > parseInt(data.f_age) || parseInt(pr_age.value) < 0) {
+                    pr_age.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.f_pa_cancer) {
+                const pa_age = document.getElementById("f_pa_cancer_age")
+                if (parseInt(pa_age.value) > parseInt(data.f_age) || parseInt(pa_age.value) < 0) {
+                    pa_age.className = "invalid"
+                    valid = false
+                }
+            }
+
+            return valid
+        },
+        2: function() { // Reproductive health
+            let valid = true
+
+            const menarche = document.getElementById("menarche")
+            if (parseInt(menarche.value) < 8 || parseInt(menarche.value) > 16) {
+                menarche.className = "invalid"
+                valid = false
+            }
+
+            if (data.oral_c !== "never") {
+                const oc_years = document.getElementById("oral_c_years")
+                if (parseInt(oc_years.value) < 0 || parseInt(oc_years.value) > parseInt(data.age)) {
+                    oc_years.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.has_children) {
+                const num_child = document.getElementById("num_children")
+                if (parseInt(num_child.value) < 0) {
+                    num_child.className = "invalid"
+                    valid = false
+                }
+                const child_age = document.getElementById("age_at_first_child")
+                if (parseInt(child_age.value) < parseInt(data.menarche) || parseInt(child_age.value) > parseInt(data.age)) {
+                    child_age.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.menopause) {
+                const men_age = document.getElementById("menopause_age")
+                if (parseInt(men_age.value) < parseInt(data.menarche) || parseInt(men_age.value) > parseInt(data.age)){
+                    men_age.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.hrt !== "never") {
+                const years = document.getElementById("hrt_years")
+                if (parseInt(years.value) < 0 || parseInt(years.value) > parseInt(data.age)) {
+                    years.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.coil) {
+                const years = document.getElementById("coil_years")
+                if (parseInt(years.value) < 0 || parseInt(years.value) > parseInt(data.age)) {
+                    years.className = "invalid"
+                    valid = false
+                }
+            }
+            
+            return valid
+        },
+        3: function() { // Cancer
+            let valid = true
+
+            if (data.t_br_cancer) {
+                const br = document.getElementById("t_br_cancer_age")
+                if (parseInt(br.value) < 0 || parseInt(br.value) > parseInt(data.age)) {
+                    br.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.t_ov_cancer) {
+                const ov = document.getElementById("t_ov_Cancer_age")
+                if (parseInt(ov.value) < 0 || parseInt(ov.value) > parseInt(data.age)) {
+                    ov.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.t_pa_cancer) {
+                const pa = document.getElementById("t_pa_cancer_age")
+                if (parseInt(pa.value) < 0 || parseInt(pa.value) > parseInt(data.age)) {
+                    pa.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.biopsy) {
+                const num_biop = document.getElementById("num_biopsy")
+                if (parseInt(num_biop) < 0) {
+                    num_biop.className = "invalid"
+                    valid = false
+                }
+            }
+
+            return valid
+        },
+        4: function() { // Bone and heart
+            let valid = true
+
+            if (data.ratio !== "") {
+                const ratio = document.getElementById("ratio")
+                if (parseInt(ratio.value) < 1 || parseInt(ratio.value) > 8) {
+                    ratio.className = "invalid"
+                    valid = false
+                }
+            }
+
+            if (data.sbp !== "") {
+                const sbp = document.getElementById("sbp")
+                if (parseInt(sbp.value) < 50 || parseInt(sbp.value) > 200) {
+                    sbp.className = "invalid"
+                    valid = false
+                }
+            }
+
+            return valid
+        },
+        5: function() { // Medical history
+            // Validation not needed
+            return true
+        }
+    }
+
+    const handlePrev = () => setPage(prev => prev - 1)
+
+    /* On next page, page specific validation function is called. If any fail, 
+    page does not change, error messages displayed. */
+    const handleNext = () => {
+        console.log(data)
+        if (validate[page]()) {
+            setPage(prev => prev + 1)
+        }
+    }
+
+    // Object representing questionnaire responses
     const [data, setData] = useState({
         age: "",
         height: "",
@@ -60,6 +311,12 @@ export const FormProvider = ({ children }) => {
         coil_ius: false,
         coil_years: "",
         cancer: false,
+        t_br_cancer: false,
+        t_br_cancer_age: "",
+        t_ov_cancer: false,
+        t_ov_cancer_age: "",
+        t_pa_cancer: false,
+        t_pa_cancer_age: "",
         biopsy: false,
         num_biopsy: "",
         atyp_hyperplasia: false,
@@ -92,13 +349,12 @@ export const FormProvider = ({ children }) => {
     })
 
 
-    // Form validation logic. Cannot move on to next page if some data invalid.
-    const pageValid = [
+    /* Form completion logic, disables next page button if required inputs are 
+    not filled. Does NOT validate data. */
+    const pageComplete = [
 
         (
             Object.values(data).slice(0, 8).every(Boolean) 
-            && data.age > 39 && data.age < 81
-            && data.heightinches >= 0 && data.heightinches < 13
         ),
 
         (
@@ -118,12 +374,18 @@ export const FormProvider = ({ children }) => {
         ),
 
         (
-            !data.biopsy || (data.num_biopsy)
+            (!data.t_br_cancer || data.t_br_cancer_age) &&
+            (!data.t_ov_cancer || data.t_ov_cancer_age) &&
+            (!data.t_pa_cancer || data.t_pa_cancer_age) &&
+            (!data.biopsy || data.num_biopsy)
         ),
+
+        true,
 
         false
     ]
 
+    // Clears values of conditional number question if not applicable. 
     useEffect(() => {
         if (!data.m_br_cancer) {
             setData(prevData => ({
@@ -235,11 +497,50 @@ export const FormProvider = ({ children }) => {
         }
     }, [data.biopsy])
 
+    useEffect(() => {
+        if (!data.t_br_cancer) {
+            setData(prevData => ({
+                ...prevData,
+                t_br_cancer_age: ""
+            }))
+        }
+    }, [data.t_br_cancer])
+
+    useEffect(() => {
+        if (!data.t_ov_cancer) {
+            setData(prevData => ({
+                ...prevData,
+                t_ov_cancer_age: ""
+            }))
+        }
+    }, [data.t_ov_cancer])
+
+    useEffect(() => {
+        if (!data.t_pa_cancer) {
+            setData(prevData => ({
+                ...prevData,
+                t_pa_cancer_age: ""
+            }))
+        }
+    }, [data.t_pa_cancer])
+
+    useEffect(() => {
+        if (!data.cancer) {
+            setData(prevData => ({
+                ...prevData,
+                t_br_cancer_age: "",
+                t_ov_cancer_age: "",
+                t_pa_cancer_age: ""
+            }))
+        }
+    }, [data.cancer])
+
     const handleChange = e => {
         const type = e.target.type
         const name = e.target.name
         const value = e.target.value
 
+        // Special case for binary radio questions sets value to boolean
         if (type === "radio" && (value === "true" || value === "false")) {
             setData(prevData => ({
                 ...prevData,
@@ -321,11 +622,12 @@ export const FormProvider = ({ children }) => {
             value={{
                 title,
                 page, 
-                setPage,
+                handlePrev,
+                handleNext,
                 data,
                 setData,
                 handleChange,
-                pageValid,
+                pageComplete,
                 heightUnit,
                 weightUnit,
                 handleUnitChange

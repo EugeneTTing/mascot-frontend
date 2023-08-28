@@ -18,7 +18,7 @@ const About = () =>  {
         <>
             <div className="form-page">
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Age must be a number between 40 and 80."}>
                     <div className="number-question">
                         <label htmlFor="age">Age (40-80): </label>
                         <input
@@ -31,7 +31,7 @@ const About = () =>  {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Height cannot be less than zero, and inches must be between 0 and 11."}>
                     <div className="number-question">
                         <label htmlFor="height">Height:</label>
                         <div className="input-units">
@@ -40,7 +40,7 @@ const About = () =>  {
                                 <>
                                     <input
                                         type="number"
-                                        id="height"
+                                        id="heightfeet"
                                         name="heightfeet"
                                         value={data.heightfeet}
                                         onChange={handleChange}
@@ -48,7 +48,7 @@ const About = () =>  {
                                     <p>feet</p>
                                     <input
                                         type="number"
-                                        id="height"
+                                        id="heightinches"
                                         name="heightinches"
                                         value={data.heightinches}
                                         onChange={handleChange}
@@ -72,7 +72,7 @@ const About = () =>  {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Weight cannot be less than zero."}>
                     <div className="number-question">
                         <label htmlFor="weight">Weight:</label>
                         <div className="input-units">

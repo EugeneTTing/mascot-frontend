@@ -16,7 +16,7 @@ const ReproductiveHealth = () => {
 
             <div className="form-page">
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Please enter a number between 8 and 16."}>
                     <div className="number-question">
 
                         <label htmlFor="menarche">
@@ -60,7 +60,7 @@ const ReproductiveHealth = () => {
 
                 {(data.oral_c === "former" || data.oral_c === "current") && 
 
-                    <div className="question-wrapper conditional">
+                    <div className="question-wrapper conditional" data-error={"Number of years must be greater than zero, and not larger than your age."}>
                         <div className="number-question">
 
                             <label htmlFor="oral_c_years">
@@ -92,7 +92,7 @@ const ReproductiveHealth = () => {
                 {data.has_children &&
 
                     <>
-                        <div className="question-wrapper conditional">
+                        <div className="question-wrapper conditional" data-error={"Number of children must be greater than zero."}>
                             <div className="number-question">
 
                                 <label htmlFor="num_children">
@@ -109,7 +109,7 @@ const ReproductiveHealth = () => {
                             </div>
                         </div>
 
-                        <div className="question-wrapper conditional">
+                        <div className="question-wrapper conditional" data-error={"Age at first child must be greater than zero, and not larger than your age."}>
                             <div className="number-question">
 
                                 <label htmlFor="age_at_first_child">
@@ -140,7 +140,7 @@ const ReproductiveHealth = () => {
                 </div>
 
                 {data.menopause &&
-                    <div className="question-wrapper conditional">
+                    <div className="question-wrapper conditional" data-error={"Menopause age must be greater than age at menarche, and not larger than your age."}>
                         <div className="number-question">
 
                             <label htmlFor="menopause_age">
@@ -193,7 +193,7 @@ const ReproductiveHealth = () => {
 
                 {(data.hrt === "former" || data.hrt === "current") && 
                     <>
-                        <div className="question-wrapper conditional">
+                        <div className="question-wrapper conditional" data-error={"Number of years must be greater than zero, and not larger than your age."}>
                             <div className="number-question">
 
                                 <label htmlFor="hrt_years">
@@ -266,7 +266,7 @@ const ReproductiveHealth = () => {
                             </div>
                         </div>
 
-                        <div className="question-wrapper conditional">
+                        <div className="question-wrapper conditional" data-error={"Number of years must be greater than zero, and not larger than your age."}>
                             <div className="number-question">
 
                                 <label htmlFor="coil_years">

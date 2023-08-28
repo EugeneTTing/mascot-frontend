@@ -2,7 +2,7 @@ import useFormContext from "../hooks/useFormContext"
 import BinaryRadio from "./BinaryRadio"
 import "./components.css"
 
-const BoneCancer = () => {
+const BoneHeart = () => {
 
     const {
         data,
@@ -14,7 +14,7 @@ const BoneCancer = () => {
 
             <div className="form-page">
 
-                <div className="question-wrapper">
+                {/* <div className="question-wrapper">
                     <div className="binary-question">
                         <p>
                             Have you been diagnosed with any cancer?
@@ -35,7 +35,7 @@ const BoneCancer = () => {
                 {data.biopsy &&
                     <>
 
-                        <div className="question-wrapper">
+                        <div className="question-wrapper" data-error={"Number of biopsies must be greater than zero."}>
                             <div className="number-question">
                                 <p>
                                     How many biopsies have you had?
@@ -60,7 +60,7 @@ const BoneCancer = () => {
                         </div>
 
                     </>
-                }
+                } */}
 
                 <div className="question-wrapper">
                     <div className="binary-question">
@@ -125,7 +125,7 @@ const BoneCancer = () => {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Your cholesterol/HDL ratio must be between 1 and 8."}>
                     <div className="number-question">
                         <label htmlFor="ratio">
                             What is your cholesterol/HDL ratio? (leave blank if unknown)
@@ -139,7 +139,7 @@ const BoneCancer = () => {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Your systolic blood pressure must be between 50 and 200."}>
                     <div className="number-question">
                         <label htmlFor="sbp">
                             What is your systolic blood pressure (mmHg)? (leave blank if unknown)
@@ -162,4 +162,4 @@ const BoneCancer = () => {
     return content
 }
 
-export default BoneCancer
+export default BoneHeart

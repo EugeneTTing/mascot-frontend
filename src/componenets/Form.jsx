@@ -10,9 +10,10 @@ const Form = () => {
     const {
         title,
         page,
-        setPage,
         data,
-        pageValid,
+        handlePrev,
+        handleNext,
+        pageComplete,
         heightUnit,
         weightUnit
     } = useFormContext()
@@ -24,10 +25,6 @@ const Form = () => {
     const [submitted, setSubmitted] = useState(false)
 
     const [receivedResult, setReceivedResult] = useState(false)
-
-    const handlePrev = () => setPage(prev => prev - 1)
-
-    const handleNext = () => setPage(prev => prev + 1)
 
     function dataToJSON() {
 
@@ -54,6 +51,9 @@ const Form = () => {
             "m_pa_cancer",
             "f_pr_cancer",
             "f_pa_cancer",
+            "t_br_cancer",
+            "t_ov_cancer",
+            "t_pa_cancer",
             "has_children",
             "menopause",
             "coil"
@@ -93,7 +93,7 @@ const Form = () => {
     // Sets width of form progress bar
     useEffect(() => {
         let elem = document.getElementById("progress")
-        let width = (page / 4) * 100 + "%"
+        let width = (page / 5) * 100 + "%"
         elem.style.width = width
     }, [page])
 
@@ -119,9 +119,9 @@ const Form = () => {
                     <div className="form-control">
                         <button type="button" onClick={handlePrev} hidden={page === 0}>Previous Page</button>
 
-                        <button type="button" onClick={handleNext} hidden={page === 4} disabled={!pageValid[page]}>Next Page</button>
+                        <button type="button" onClick={handleNext} hidden={page === 5} disabled={!pageComplete[page]}>Next Page</button>
 
-                        <button type="submit" hidden={!(page === 4)}>Submit</button>
+                        <button type="submit" hidden={!(page === 5)}>Submit</button>
                     </div>
                     
                 </form>

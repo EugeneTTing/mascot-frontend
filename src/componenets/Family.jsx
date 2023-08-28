@@ -50,7 +50,7 @@ const Family = () => {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Your mother's age must be greater than zero, and smaller than your age if she is alive."}>
                     <div className="number-question">
                         <label htmlFor="m_age">
                             {data.m_dead ? "Her age at death:" : "Her age:"}
@@ -65,7 +65,7 @@ const Family = () => {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Your mother's year of birth must be greater than zero and consistent with her age at death."}>
                     <div className="number-question">
                         <label htmlFor="m_yob">Her year of birth:</label>
                         <input
@@ -90,10 +90,10 @@ const Family = () => {
 
                 {data.m_br_cancer &&
                     <>
-                        <div className="question-wrapper conditional">
+                        <div className="question-wrapper conditional" data-error={"Age of diagnosis must be greater than zero, and smaller than your mother's age."}>
                             <div className="number-question">
                                 <p>
-                                    At what age was the diagnosis?
+                                    At what age was the breast cancer diagnosis?
                                 </p>
                                 <input
                                     type="number"
@@ -115,10 +115,10 @@ const Family = () => {
                         </div>
 
                         {data.m_br_cancer_2 &&
-                            <div className="question-wrapper conditional2">
+                            <div className="question-wrapper conditional2" data-error={"Age of diagnosis must be greater than zero, and smaller than your mother's age."}>
                                 <div className="number-question">
                                     <label htmlFor="m_br_cancer_2_age">
-                                        At what age was the second diagnosis?
+                                        At what age was the second (contralateral) breast cancer diagnosis?
                                     </label>
                                     <input
                                         type="number"
@@ -144,10 +144,10 @@ const Family = () => {
                 </div>
 
                 {data.m_ov_cancer &&
-                    <div className="question-wrapper conditional">
+                    <div className="question-wrapper conditional" data-error={"Age of diagnosis must be greater than zero, and smaller than your mother's age."}>
                         <div className="number-question">
                             <label htmlFor="m_ov_cancer_age">
-                                At what age was the diagnosis?
+                                At what age was the ovarian cancer diagnosis?
                             </label>
                             <input
                                 type="number"
@@ -170,10 +170,10 @@ const Family = () => {
                 </div>
 
                 {data.m_pa_cancer &&
-                    <div className="question-wrapper conditional">
+                    <div className="question-wrapper conditional" data-error={"Age of diagnosis must be greater than zero, and smaller than your mother's age."}>
                         <div className="number-question">
                             <label htmlFor="m_pa_cancer_age">
-                                At what age was the diagnosis?
+                                At what age was the pancreatic cancer diagnosis?
                             </label>
                             <input
                                 type="number"
@@ -195,7 +195,7 @@ const Family = () => {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Your father's age must be greater than zero, and smaller than your age if he is alive."}>
                     <div className="number-question">
                         <label htmlFor="f_age">
                             {data.f_dead ? "His age at death:" : "His age:"}
@@ -210,7 +210,7 @@ const Family = () => {
                     </div>
                 </div>
 
-                <div className="question-wrapper">
+                <div className="question-wrapper" data-error={"Your father's year of birth must be greater than zero and consistent with his age at death."}>
                     <div className="number-question">
                         <label htmlFor="f_yob">His year of birth:</label>
                         <input
@@ -234,7 +234,7 @@ const Family = () => {
                 </div>
 
                 {data.f_pr_cancer &&
-                    <div className="question-wrapper conditional">
+                    <div className="question-wrapper conditional" data-error={"Age of diagnosis must be greater than zero, and smaller than your father's age."}>
                         <div className="number-question">
                             <label htmlFor="f_pr_cancer_age">
                                 At what age was the prostate cancer diagnosis?
@@ -260,7 +260,7 @@ const Family = () => {
                 </div>
 
                 {data.f_pa_cancer &&
-                    <div className="question-wrapper conditional">
+                    <div className="question-wrapper conditional" data-error={"Age of diagnosis must be greater than zero, and smaller than your father's age."}>
                         <div className="number-question">
                             <label htmlFor="f_pa_cancer_age">
                                 At what age was the prostate cancer diagnosis?
