@@ -242,7 +242,7 @@ export const FormProvider = ({ children }) => {
     /* On next page, page specific validation function is called. If any fail, 
     page does not change, error messages displayed. */
     const handleNext = () => {
-        console.log(data)
+        // console.log(data)
         if (validate[page]()) {
             setPage(prev => prev + 1)
         }

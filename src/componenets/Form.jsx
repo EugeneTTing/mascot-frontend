@@ -67,27 +67,30 @@ const Form = () => {
 
     const handleSubmit = e => {
 
-        e.preventDefault()
-
-        // HTTP request to backend API
-        let xhr = new XMLHttpRequest()
-        xhr.open("POST", `${process.env.REACT_APP_API_URL}/risk`, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                let res = JSON.parse(this.responseText)
-                console.log(res)
-                setResults(res)
-                setReceivedResult(true)
+        if (page === 5) {
+            e.preventDefault()
+    
+            // HTTP request to backend API
+            let xhr = new XMLHttpRequest()
+            xhr.open("POST", `${process.env.REACT_APP_API_URL}/risk`, true)
+            xhr.setRequestHeader("Content-Type", "application/json")
+    
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let res = JSON.parse(this.responseText)
+                    console.log(res)
+                    setResults(res)
+                    setReceivedResult(true)
+                }
             }
+    
+            const dataJSON = dataToJSON()
+    
+            xhr.send(dataJSON)
+    
+            setSubmitted(true)
         }
 
-        const dataJSON = dataToJSON()
-
-        xhr.send(dataJSON)
-
-        setSubmitted(true)
     }
 
     // Sets width of form progress bar
