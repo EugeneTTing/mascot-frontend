@@ -14,11 +14,12 @@ import Symptoms from './routes/Symptoms';
 import Help from './routes/Help';
 import Formulations from './routes/Formulation';
 import './index.css';
+import ErrorPage from './error-page';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Root/>}>
+    <Route path='/' element={<Root/>} errorElement={<ErrorPage/>}>
       <Route index element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/risk' element={<Risk/>}/>

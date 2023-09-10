@@ -42,6 +42,25 @@ const RiskDisplay = () => {
     const content = (
 
         <>
+
+            {activeTab === 1 &&
+
+                <div className="caveat">
+                    <h3>MAsCoT May Underestimate Your Risk</h3>
+                    <p>The estimates obtained from MAsCoT cannot account for risk 
+                    factors which are not collected by its questionnaire. Certain 
+                    risk factors for breast cancer are intentionally left out of 
+                    MAsCoT's mode. If you have genetic test results or received 
+                    a mammogram in the past, you may have additional information 
+                    which will increase the accuracy of your breast cancer risk 
+                    prediction. Please visit <a href="https://www.canrisk.org/">CanRisk</a> to
+                    find out more.</p>
+
+                </div>
+            
+            }
+
+
             <div className="percentage-display">
                 <h2>Baseline risk: {baseline}%</h2>
                 <h2>Risk with HRT: {total}%</h2>
@@ -154,7 +173,7 @@ const Summary = () => {
             className={`bar ${results[name].hazard > 1 ? "increased-risk" : "reduced-risk"}`}
             key={index}
             style={{
-                width: Math.abs(results[name].baseline * 10 * (results[name].hazard - 1)) / 20 * 100 + '%',
+                width: Math.abs(results[name].baseline * 10 * (results[name].hazard - 1)) / 50 * 100 + '%',
                 gridRowStart: index + 1
             }}
             >
@@ -214,9 +233,9 @@ const Summary = () => {
                     <p>Fracture</p>
                 </div>
                 <div className="axes">
-                    <p>{barUnits === "abs" ? "-20" : "0.0"}</p>
+                    <p>{barUnits === "abs" ? "-50" : "0.0"}</p>
                     <p style={{justifySelf:"center"}}>{barUnits === "abs" ? "0" : "1.0"}</p>
-                    <p style={{justifySelf:"end"}}>{barUnits === "abs" ? "+20" : "2.0"}</p>
+                    <p style={{justifySelf:"end"}}>{barUnits === "abs" ? "+50" : "2.0"}</p>
                     <p><i>reduced risk</i></p>
                     <p style={{justifySelf:"center"}}><i>no change</i></p>
                     <p style={{justifySelf:"end"}}><i>increased risk</i></p>

@@ -132,7 +132,9 @@ const Form = () => {
 
 
             {(submitted && !receivedResult) &&
-                <p>Loading</p>
+                <div className="loader-container">
+                    <span className="loader"></span>
+                </div>
             }
 
             {receivedResult &&
