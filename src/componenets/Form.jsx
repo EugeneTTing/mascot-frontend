@@ -22,9 +22,13 @@ const Form = () => {
         setResults
     } = useRiskContext()
 
+    const [error, setError] = useState(false)
+
     const [submitted, setSubmitted] = useState(false)
 
     const [receivedResult, setReceivedResult] = useState(false)
+
+    const [loading, setLoading] = useState(false)
 
     function dataToJSON() {
 
@@ -77,10 +81,19 @@ const Form = () => {
     
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    let res = JSON.parse(this.responseText)
-                    console.log(res)
-                    setResults(res)
-                    setReceivedResult(true)
+                    try {
+                        let res = JSON.parse(this.responseText)
+                        console.log(res)
+                        setResults(res)
+                        setLoading(false)
+                        setReceivedResult(true)
+                    } catch {
+                        setLoading(false)
+                        setError(true)
+                    }
+                } else {
+                    setLoading(false)
+                    setError(true)
                 }
             }
     
@@ -89,6 +102,7 @@ const Form = () => {
             xhr.send(dataJSON)
     
             setSubmitted(true)
+            setLoading(true)
         }
 
     }
@@ -131,7 +145,7 @@ const Form = () => {
             }
 
 
-            {(submitted && !receivedResult) &&
+            {loading &&
                 <div className="loader-container">
                     <span className="loader"></span>
                 </div>
@@ -139,6 +153,15 @@ const Form = () => {
 
             {receivedResult &&
                 <Display/>
+            }
+
+            {error &&
+                <>
+                
+                    <h1 style={{textAlign: "center"}}>Oops!</h1>
+                    <p style={{textAlign: "center"}}>Sorry, an unexpected error has occurred. Please try again later.</p>
+
+                </>
             }
         </>
     )
