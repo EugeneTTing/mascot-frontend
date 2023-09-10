@@ -1,9 +1,10 @@
-import "./home.css";
+import "./routes.css";
+
 
 export default function Home () {
     return (
         <>
-            <div>
+            <div className="home-container">
                 <img 
                     src="/images/mascot_new.png" 
                     alt="Logo"/>

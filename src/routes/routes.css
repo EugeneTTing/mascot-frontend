@@ -2,6 +2,34 @@
     margin: 0 10px;
 }
 
+
+.title {
+    text-align: center;
+    color: #041514;
+    font-size: 48px;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+}
+
+
+.color {
+    color: #d35b54;
+}
+
+.home-container {
+    display: flex;
+    height: 100%;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    > img {
+        display: block;
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
 .disclaimer {
     font-size: 14px;
     font-style: italic;

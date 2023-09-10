@@ -1,4 +1,5 @@
-import "./help.css";
+import "./routes.css";
+
 
 export default function Help () {
     return (

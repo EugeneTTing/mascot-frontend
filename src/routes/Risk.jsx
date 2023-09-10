@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Form from "../../componenets/Form";
-import { FormProvider } from "../../context/FormContext";
-import "./risk.css";
-import { RiskProvider } from "../../context/RiskContext";
+import Form from "../componenets/Form";
+import { FormProvider } from "../context/FormContext";
+import "./routes.css";
+import { RiskProvider } from "../context/RiskContext";
 
 export default function Risk () {
 

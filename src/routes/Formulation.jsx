@@ -1,7 +1,7 @@
 import { useState } from "react"
-import FormulationForm from "../../componenets/FormulationForm"
-import "./formulation.css"
-import FormulationResults from "../../componenets/FormulationResults"
+import FormulationForm from "../componenets/FormulationForm"
+import "./routes.css";
+import FormulationResults from "../componenets/FormulationResults"
 
 export default function Formulations () {
 

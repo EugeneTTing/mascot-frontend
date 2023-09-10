@@ -7,12 +7,12 @@ import {
   Route,
 } from 'react-router-dom';
 import Root from './root';
-import Home from './routes/home/Home';
-import About from './routes/about/About';
-import Risk from './routes/risk/Risk'
-import Symptoms from './routes/symptoms/Symptoms';
-import Help from './routes/help/Help';
-import Formulations from './routes/formulation/Formulation';
+import Home from './routes/Home';
+import About from './routes/About';
+import Risk from './routes/Risk'
+import Symptoms from './routes/Symptoms';
+import Help from './routes/Help';
+import Formulations from './routes/Formulation';
 import './index.css';
 // import reportWebVitals from './reportWebVitals';
 
