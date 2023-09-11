@@ -33,7 +33,7 @@ const About = () =>  {
 
                 <div className="question-wrapper" data-error={"Height cannot be less than zero, and inches must be between 0 and 11."}>
                     <div className="number-question">
-                        <label htmlFor="height">Height:</label>
+                        <label>Height:</label>
                         <div className="input-units">
                             {heightUnit === "ft" 
                                 ?

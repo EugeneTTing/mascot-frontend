@@ -9,7 +9,8 @@ const RiskDisplay = () => {
         tabNames,
         activeTab,
         results,
-        condition
+        condition,
+        caveats
     } = useRiskContext()
 
     const currentTab = tabNames[activeTab]
@@ -43,9 +44,11 @@ const RiskDisplay = () => {
 
         <>
 
+            {/* Caveat for breast cancer model. */}
             {activeTab === 1 &&
 
                 <div className="caveat">
+
                     <h3>MAsCoT May Underestimate Your Risk</h3>
                     <p>The estimates obtained from MAsCoT cannot account for risk 
                     factors which are not collected by its questionnaire. Certain 
@@ -58,6 +61,43 @@ const RiskDisplay = () => {
 
                 </div>
             
+            }
+
+            {((activeTab === 2 || activeTab ===3) && (caveats.cvd || caveats.ratio === "" || caveats.sbp === ""))
+                &&
+
+                <div className="caveat">
+
+                    {caveats.cvd &&
+                        <>
+
+                            <h3>Warning</h3>
+                            <p>MAsCoT's cardiovascular disease risk estimate is 
+                            valid for those without a diagnosis for CVD. This 
+                            estimate is for an individual with your risk factors, 
+                            but without a diagnosis for CVD, and may not reflect 
+                            your true risks.</p>
+
+                        </>
+                    }
+
+                    {(caveats.ratio === "" || caveats.sbp === "") && 
+
+                        <>
+
+                            <h3>Estimate with Incomplete Information</h3>
+                            <p>Your cardiovascular disease risk estimated has 
+                            been calculated with estimated data. If you have left 
+                            the cholesterol/HDL ratio and/or systolic blood pressure 
+                            blank, a value of 4 and 125 are assumed respectively.</p>
+                        
+                        </>
+
+                    }
+
+                </div>
+                
+                
             }
 
 

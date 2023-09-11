@@ -21,6 +21,16 @@ export default function About () {
 
             <div className="info-text">
 
+                
+                <h3>What is MAsCoT?</h3>
+                <p>MAsCoT - the Menopause Assessment Communication Tool - is an 
+                online tool which provides you with a personalised risk and benefit 
+                profile of HRT use. If you and your healthcare provider decide 
+                to commence HRT, MAsCoT can also help you figure out the best
+                HRT formulation for you. MAsCoT is designed to empower shared 
+                decision-making and <b>does not</b> replace medical advice. 
+                Please consult with your healthcare provider for more information 
+                regarding the menopause and HRT.</p>
 
                 <h3>What is the menopause?</h3>
                 <p> Menopause is an important period of transition for 
@@ -47,6 +57,8 @@ export default function About () {
                 and type of HRT considered for use. Simply put, HRT use effects 
                 every woman differently.</p>
 
+
+                <h3>Long Term Health Outcomes</h3>
                 <Collapsible title={"Breast Cancer"}>
                     <p>Oestrogen-only HRT use has little to no affect on the risk 
                     of breast cancer, whilst combined oestrogen and progestogen 
@@ -99,12 +111,6 @@ export default function About () {
                 emohasises the need for an individualised approach when managing 
                 menopausal symptoms.</p>
 
-
-                <p>MAsCoT - the Menopause Assessment Communication Tool - is an 
-                online tool which provides you with a personalised risk and benefit 
-                profile of HRT use. If you and your healthcare provider decide 
-                to commence HRT, MAsCoT can also help you figure out the best
-                HRT formulation for you.</p>
 
             </div>
 

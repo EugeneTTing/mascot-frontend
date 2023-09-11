@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 const RiskContext = createContext()
 
@@ -24,6 +24,18 @@ export const RiskProvider = ({children}) => {
 
     const [results, setResults] = useState({})
 
+    const [caveats, setCaveats] = useState({})
+
+    const handleCaveats = (data) => {
+
+        setCaveats({
+            cvd: data.cvd,
+            ratio: data.ratio,
+            sbp: data.sbp,
+        })
+
+    }
+
     return (
         <RiskContext.Provider
             value={{
@@ -32,7 +44,9 @@ export const RiskProvider = ({children}) => {
                 setActiveTab,
                 results,
                 setResults,
-                condition
+                condition,
+                handleCaveats,
+                caveats
             }}>
 
             {children}

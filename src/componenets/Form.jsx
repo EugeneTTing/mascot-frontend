@@ -19,10 +19,9 @@ const Form = () => {
     } = useFormContext()
 
     const {
-        setResults
+        setResults,
+        handleCaveats
     } = useRiskContext()
-
-    const [error, setError] = useState(false)
 
     const [submitted, setSubmitted] = useState(false)
 
@@ -71,6 +70,8 @@ const Form = () => {
 
     const handleSubmit = e => {
 
+        handleCaveats(data)
+
         if (page === 5) {
             e.preventDefault()
     
@@ -81,19 +82,10 @@ const Form = () => {
     
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    try {
-                        let res = JSON.parse(this.responseText)
-                        console.log(res)
-                        setResults(res)
-                        setLoading(false)
-                        setReceivedResult(true)
-                    } catch {
-                        setLoading(false)
-                        setError(true)
-                    }
-                } else {
+                    let res = JSON.parse(this.responseText)
+                    setResults(res)
                     setLoading(false)
-                    setError(true)
+                    setReceivedResult(true)
                 }
             }
     
@@ -155,14 +147,6 @@ const Form = () => {
                 <Display/>
             }
 
-            {error &&
-                <>
-                
-                    <h1 style={{textAlign: "center"}}>Oops!</h1>
-                    <p style={{textAlign: "center"}}>Sorry, an unexpected error has occurred. Please try again later.</p>
-
-                </>
-            }
         </>
     )
 
