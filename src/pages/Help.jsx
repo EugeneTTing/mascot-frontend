@@ -1,4 +1,4 @@
-import Collapsible from "../componenets/Collapsible";
+import Collapsible from "../components/Collapsible";
 import "./routes.css";
 
 

@@ -1,5 +1,5 @@
 import "./routes.css";
-import SymptomTracker from "../componenets/SymptomTracker";
+import SymptomTracker from "../components/SymptomTracker";
 
 export default function Symptoms () {
 
