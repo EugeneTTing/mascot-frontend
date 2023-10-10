@@ -1,3 +1,56 @@
+# Sample JSON Data
+
+{
+    "age":"45",
+    "height":"160",
+    "weight":"55",
+    "ethnicity":"0",
+    "alcohol":"1",
+    "smoking":"1",
+    "fh_cvd":false,
+    "fh_osteo":false,
+    "ash":false,
+    "m_dead":false,
+    "m_age":"76",
+    "m_yob":"1947",
+    "f_dead":false,
+    "f_age":"76",
+    "f_yob":"1947",
+    "menarche":"14",
+    "oral_c":"never",
+    "hysterectomy":false,
+    "hrt":"never",
+    "hrt_form":"e+p",
+    "coil_ius":false,
+    "cancer":false,
+    "biopsy":false,
+    "atyp_hyperplasia":false,
+    "ra":false,"falls":false,
+    "cvd":false,
+    "heart_failure":false,
+    "varicose_vein":false,
+    "af":false,
+    "hypert_treat":false,
+    "diabetes":"none",
+    "kidney":"none",
+    "liver":false,
+    "parkin":false,
+    "migraine":false,
+    "sle":false,
+    "semi":false,
+    "copd":false,
+    "malabsorption":false,
+    "dementia":false,
+    "endocrine":false,
+    "hospital":false,
+    "antipsy":"none",
+    "steroids":false,
+    "tamoxifen":false,
+    "anticonvulsants":false,
+    "antidepressants":false
+}
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
